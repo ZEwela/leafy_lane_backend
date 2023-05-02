@@ -22,7 +22,7 @@ export const sampleProducts: Product[] = [
     price: 10.0,
     countInStock: 10,
     description: "Great plant for bathrooms",
-    rating: 4.5,
+    rating: 4.2,
     numReviews: 10,
   },
   {
