@@ -6,6 +6,7 @@ import { productRouter } from "./routers/productRouter";
 import { seedRouter } from "./routers/seedRouter";
 import { userRouter } from "./routers/userRouter";
 import { orderRouter } from "./routers/orderRouter";
+import { keyRouter } from "./routers/keyRouter";
 // import expressListRoutes from "express-list-routes";
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.use("/api/products", productRouter);
 app.use("/api/seed", seedRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/keys", keyRouter);
 // expressListRoutes(app);
 const PORT = 4000;
 app.listen(PORT, () => {
