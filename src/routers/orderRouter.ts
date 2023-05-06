@@ -7,6 +7,15 @@ import { Product } from "../models/productModel";
 export const orderRouter = express.Router();
 
 orderRouter.get(
+  "/history",
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const orders = await OrderModel.find({ user: req.user._id });
+    res.json(orders);
+  })
+);
+
+orderRouter.get(
   "/:id",
   isAuth,
   asyncHandler(async (req: Request, res: Response) => {
