@@ -8,7 +8,7 @@ import { userRouter } from "./routers/userRouter";
 import { orderRouter } from "./routers/orderRouter";
 import { keyRouter } from "./routers/keyRouter";
 import path from "path";
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
 // import expressListRoutes from "express-list-routes";
 
@@ -38,7 +38,7 @@ app.use("/api/orders", orderRouter);
 app.use("/api/keys", keyRouter);
 // expressListRoutes(app);
 
-app.use(express.static(path.join(__dirname, "../..frontend/dist")));
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 app.get("*", (req: Request, res: Response) =>
   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"))
 );
