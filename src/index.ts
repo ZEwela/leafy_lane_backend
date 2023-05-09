@@ -7,6 +7,9 @@ import { seedRouter } from "./routers/seedRouter";
 import { userRouter } from "./routers/userRouter";
 import { orderRouter } from "./routers/orderRouter";
 import { keyRouter } from "./routers/keyRouter";
+import path from "path";
+import { Request, Response } from "express";
+
 // import expressListRoutes from "express-list-routes";
 
 dotenv.config();
@@ -34,7 +37,13 @@ app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/keys", keyRouter);
 // expressListRoutes(app);
-const PORT = 4000;
+
+app.use(express.static(path.join(__dirname, "../..frontend/dist")));
+app.get("*", (req: Request, res: Response) =>
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"))
+);
+
+const PORT: number = parseInt((process.env.PORT || "4000") as string, 10);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
