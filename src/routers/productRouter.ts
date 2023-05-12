@@ -2,8 +2,6 @@ import express, { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { ProductModel } from "../models/productModel";
 import { isAuth } from "../utils";
-import multer from "multer";
-const upload = multer({ dest: "uploads/" });
 
 export const productRouter = express.Router();
 

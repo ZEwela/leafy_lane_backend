@@ -9,6 +9,7 @@ import { orderRouter } from "./routers/orderRouter";
 import { keyRouter } from "./routers/keyRouter";
 import path from "path";
 import { Request, Response, NextFunction } from "express";
+import { fileRouter } from "./routers/fileRouter";
 
 // import expressListRoutes from "express-list-routes";
 
@@ -36,6 +37,7 @@ app.use("/api/seed", seedRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/keys", keyRouter);
+app.use("/api/files", fileRouter);
 // expressListRoutes(app);
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
