@@ -57,3 +57,38 @@ productRouter.post(
       .json({ message: "Product Created", product: createdProduct });
   })
 );
+
+productRouter.put(
+  "/:id",
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const product = await ProductModel.findById(req.params.id);
+    if (product) {
+      product._id = product._id;
+      product.name = req.body.name;
+      product.slug = req.body.slug;
+      product.price = req.body.price;
+      product.image = req.body.image;
+      product.brand = req.body.brand;
+      product.category = req.body.category;
+      product.countInStock = req.body.countInStock;
+      product.description = req.body.description;
+      product.rating = req.body.rating;
+      product.numReviews = req.body.numReviews;
+
+      const updatedProduct = await product.save();
+      res.json({ message: "Product Updated", product: updatedProduct });
+    } else {
+      res.status(404).json({ message: "Product not found" });
+    }
+  })
+);
+
+productRouter.delete(
+  "/:id",
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const product = await ProductModel.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "Product deleted" });
+  })
+);
