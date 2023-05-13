@@ -5,6 +5,7 @@ import multer from "multer";
 const maxSize = 2 * 1024 * 1024;
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
+    console.log(__dirname);
     cb(null, __dirname + "/../../frontend/public/images/");
   },
   filename: (req, file, cb) => {

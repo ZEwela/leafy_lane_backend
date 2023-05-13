@@ -5,6 +5,7 @@ import fs from "fs";
 export const fileRouter = express.Router();
 
 fileRouter.post("/upload", async (req: Request, res: Response) => {
+  console.log("hej");
   try {
     await uploadFileMiddleware(req, res);
 
